@@ -1,0 +1,84 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.loy</groupId>
+  <artifactId>loy-mq</artifactId>
+  <version>1.0.0</version>
+  
+  <properties>
+  	<rabbit.queue.sufowQueue>sufowQueue</rabbit.queue.sufowQueue>
+  </properties>
+  
+  
+  <dependencies>
+  	<!-- 引入MQ -->
+  	<dependency>
+  		<groupId>com.rabbitmq</groupId>
+  		<artifactId>amqp-client</artifactId>
+  		<version>4.1.0</version>
+  	</dependency>
+  	
+  	<!-- 引入spring相关 -->
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-context</artifactId>
+  		<version>4.2.0.RELEASE</version>
+  	</dependency>
+  </dependencies>
+  
+  
+  <build>
+  		<!-- 设置输出路径 -->
+  		<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
+  		
+  		<pluginManagement>
+  			<plugins>
+  				<!-- 打包插件 -->
+  				<plugin>
+  					<groupId>org.apache.maven.plugins</groupId>
+  					<artifactId>maven-jar-plugin</artifactId>
+  					<configuration>
+  						<source>1.8</source>
+  						<target>1.8</target>
+  						<archive>
+  							<manifest>
+  								<mainClass>org.loy.mq.main.MainExecute</mainClass>
+  								<addClasspath>true</addClasspath>
+  								<classpathPrefix>libttt/</classpathPrefix>
+  							</manifest>
+  						</archive>
+  					</configuration>
+  				</plugin>		
+  			</plugins>
+  		</pluginManagement> 
+  	
+  		<!-- copy jar to lib by this -->
+  		<!--
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>src/main/webapp/WEB-INF/lib</outputDirectory>
+							<excludeTransitive>false</excludeTransitive>
+							<stripVersion>false</stripVersion>
+							<overWriteIfNewer>true</overWriteIfNewer>
+							<includeScope>runtime</includeScope>
+							<excludes>
+								<excludeArtifactIds>XmlSchema</excludeArtifactIds>
+							</excludes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+  		-->
+  </build>
+  
+</project>
